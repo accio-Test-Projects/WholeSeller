@@ -1,0 +1,118 @@
+.container{
+  width: 100%;
+  border: 1px solid #00000042;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px auto;
+}
+.options-row{
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.options-row div{
+  background: #6f696930;
+  padding: 5px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+.options-row div:hover{
+  background: #6f69695e;
+  cursor: pointer;
+  font-size: 17px;
+}
+.selected-item{
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.selected-item div{
+  background: #57ff0033;
+  padding: 5px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.selected-item div:hover{
+  background: #ee785133;
+  cursor: pointer;
+  font-size: 17px;
+}
+.save-btn-container{
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+.save-btn-container button{ 
+  border: none;
+    font-size: 20px;
+    padding: 5px 20px;
+    border-radius: 10px;
+    background: #a2fc81bd;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+}
+
+.save-btn-container button:hover{ 
+    font-size: 23px;
+   
+    background:#8bfd62
+}
+.corousel-container{
+  width: 100%;
+  border: 1px solid #00000042;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px auto;
+  padding: 10px;
+  overflow: scroll;
+}
+.corousel-item{
+  width: 200px;
+  height: 200px;
+  border: 1px solid #00000042;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease;
+  position: relative;
+  margin: 10px 20px;
+  padding: 10px;
+}
+.corousel-item svg{
+  transition: all 0.5s ease;
+}
+.corousel-item:hover svg{
+
+  font-size: 40px;
+
+}
+.corousel-add-item{
+  width: 200px;
+  height: 200px;
+  border: 1px solid #00000042;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease;
+  position: relative;
+  margin: 10px 20px;
+}
+.corousel-add-item:hover{
+  background: #a2fc8179;
+  cursor: pointer;
+
+}
+.corousel-add-item svg{
+  transition: all 0.5s ease;
+}
+.corousel-add-item:hover svg{
+
+  font-size: 40px;
+
+}

@@ -18,7 +18,7 @@ import Product from "../components/Product";
 import Cart from "../components/Cart";
 import Checkout from "../components/Checkout";
 import Success from "../components/Checkout/Success";
-
+import AdminTabs from "../Hoc/AdminTabs";
 function Navs() {
   const ProtectedRoutes = ({ type }) => {
     if (
@@ -26,7 +26,17 @@ function Navs() {
       true
     ) {
       // if type is admin
-      return <Outlet />;
+      if (type === "admin") {
+        return (
+          <AdminTabs>
+            <Outlet />
+          </AdminTabs>
+        );
+      }
+      // if type is user
+      else if (type === "user") {
+        return <Outlet />;
+      }
     } else {
       // user is not logged in
 
@@ -54,7 +64,9 @@ function Navs() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/success" element={<Success />} />
         </Route>
+
         <Route path="/admin/login" element={<AdminLogin />} />
+        
         <Route element={<ProtectedRoutes type={"admin"} />}>
           <Route path="/admin/landingPage" element={<AdminLandingPage />} />
           <Route path="/admin/products" element={<AllProducts />} />

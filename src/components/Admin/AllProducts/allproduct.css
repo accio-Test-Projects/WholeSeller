@@ -1,0 +1,12 @@
+.btn-container{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0 0 1rem 0;
+}
+.add-product-field label{
+  float: left;
+  margin: 10px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
