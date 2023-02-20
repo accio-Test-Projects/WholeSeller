@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AddCircleOutlineTwoToneIcon from "@mui/icons-material/AddCircleOutlineTwoTone";
 import CancelTwoToneIcon from "@mui/icons-material/CancelTwoTone";
 import FileUpload from '../../common/FileUpload';
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "../../../fierbaseconfig";
 function Corousel() {
-  const [corousel, setCorousel] = React.useState([1]);
+  const [corousel, setCorousel] = React.useState([]);
+  const getAllcorousels = async () => {
+    // call fire store in landingpagesections collection return document with doc id newArival
+    const docref = doc(db, "landingpagesections", "corousel");
+    const docSnap = await getDoc(docref);
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      setCorousel(docSnap.data().corousels);
+    }
+  };
+  useEffect(() => {
+    getAllcorousels();
+  }, []);
   const addmore = () => {
     setCorousel([...corousel, 1]);
   };
+
   const removethisCorousel = (index) => {
     const newCorousel = corousel.filter((item, i) => i !== index);
     setCorousel(newCorousel);
@@ -44,6 +57,9 @@ function Corousel() {
     onSubmit={(e) => submitData(e)}
     className="container">
       <div className="corousel-container">
+      <h1>
+        Corousel
+      </h1>
         <div
           style={{
             display: "flex",

@@ -41,6 +41,9 @@ function CategoryBar() {
   };
   return (
     <div className="container">
+         <h1>
+        Category Bar
+      </h1>
       <div className="selected-item">
         {selectedCategory && selectedCategory.length === 0 ? (
           <div>select category</div>
