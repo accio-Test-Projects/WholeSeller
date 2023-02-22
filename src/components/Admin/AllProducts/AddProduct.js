@@ -206,7 +206,9 @@ function AddProduct({selectedProduct}) {
         </Grid>
         <Grid className="add-product-field" item xs={12}>
           <label htmlFor="name">Product Image</label>
-          <FileUpload setData={setProductData} datakey="image" />
+          <FileUpload setData={(url)=>setProductData({...productData,image:url})} datakey="image" 
+          data={productData.image}
+          />
         </Grid>
         <Grid className="btn-container" item xs={12}>
           <Button type="submit">Save</Button>

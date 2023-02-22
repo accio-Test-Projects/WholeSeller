@@ -1,0 +1,46 @@
+.bestSeller-container {
+  display: flex;
+    gap: 10px;
+    max-width: 1000px;
+    margin: auto;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.bestSeller-container >div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+    border: 1px solid #00000017;
+    border-radius: 10px;
+    box-shadow: 0px 0px 3px 0px;
+    text-align: left;
+}
+.bestSeller-container :hover .card-add-to-cart{
+  display: flex;
+}
+
+.card-add-to-cart {
+  display: none;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background: #1e215fd1;
+  color: #fff;
+  /* padding: 10px; */
+  font-size: 10px;
+  height: 40px;
+  align-items: center;
+  transition: all 1s ease;
+  
+}
+
+.card-add-to-cart :nth-child(2){
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  padding-right: 10px;
+}

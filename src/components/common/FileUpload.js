@@ -65,6 +65,9 @@ function FileUpload({ setData, datakey, data }) {
        > <CancelTwoToneIcon  /></div>
       <img 
     width={'50%'}
+    style={{
+      maxWidth: "100px",
+    }}
     src={data} alt="product" /></div>
   ) : (
     <TextField
