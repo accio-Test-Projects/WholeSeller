@@ -13,11 +13,15 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate } from 'react-router-dom';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { Badge } from '@mui/material';
+import { cartContext } from '../../coxtext/cartContext';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function TopBar({data}) {
+  const [cartState, dispatch] = React.useContext(cartContext);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 const navigate=useNavigate();
@@ -41,46 +45,10 @@ const navigate=useNavigate();
     setAnchorElUser(null);
   };
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Container maxWidth="xl">
       <Toolbar>
-         
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            WholeSaler
-          </Typography>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-        </Toolbar>
-        <Toolbar disableGutters>
-      
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+      <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -116,6 +84,26 @@ const navigate=useNavigate();
               ))}
             </Menu>
           </Box>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 5 }}>
+            WholeSaler
+          </Typography>
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="cart">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0,background:'#fff',padding:'20px' }}>
+              <Badge badgeContent={cartState&&cartState.length} color="primary">
+                <ShoppingCartOutlinedIcon  />
+              </Badge>
+              </IconButton>
+            </Tooltip>
+          </Box>
+        </Toolbar>
+        <Toolbar
+       sx={{
+        display: { xs: 'none', md: 'flex' },
+       }}
+        disableGutters>
+      
+          
           
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex',justifyContent:'space-around' } }}>
             {data.map((cat) => (

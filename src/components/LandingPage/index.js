@@ -25,7 +25,11 @@ function LandingPage() {
   }, [])
   return (
     section?(<div>
-      <TopBar data={section.categorybar.allcategories}/>
+      <div
+      style={{
+        marginBottom: '100px',
+      }}
+      ><TopBar data={section.categorybar.allcategories}/></div>
       <Banner data={section.corousel.corousels}/>
       <NewArrivals data={section.newArival.newArivals}/>
       <BestSellers data={section.BestSellers.bestSellers}/>

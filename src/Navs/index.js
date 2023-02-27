@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   BrowserRouter,
   Navigate,
@@ -19,35 +19,33 @@ import Cart from "../components/Cart";
 import Checkout from "../components/Checkout";
 import Success from "../components/Checkout/Success";
 import AdminTabs from "../Hoc/AdminTabs";
+import { userContext } from "../coxtext/userContext";
 function Navs() {
+
+  const [userState, dispatch] = useContext(userContext);
   const ProtectedRoutes = ({ type }) => {
-    if (
-      // user is logged in
-      true
-    ) {
+
       // if type is admin
       if (type === "admin") {
+        if(userState.userType==="admin"){
         return (
           <AdminTabs>
             <Outlet />
           </AdminTabs>
         );
       }
-      // if type is user
-      else if (type === "user") {
-        return <Outlet />;
-      }
-    } else {
-      // user is not logged in
-
-      // if type is admin
-      if (type === "admin") {
+      else{
         return <Navigate to="/admin/login" />;
       }
-      // if type is user
+    }
       else if (type === "user") {
+        if(userState.userType==="user"){
+        return <Outlet />;
+      }
+      else{
         return <Navigate to="/login" />;
       }
+    
     }
   };
 
